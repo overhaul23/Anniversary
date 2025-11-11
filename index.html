@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Page Card</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card-container {
+            perspective: 1000px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            min-height: 400px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+        }
+
+        .page {
+            padding: 40px;
+            min-height: 400px;
+            display: none;
+            animation: slideIn 0.5s ease-out;
+            position: relative;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .page-number {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 14px;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .page-title {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-content {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .nav-btn {
+            background: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: #667eea;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .page-indicator {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: white;
+            transform: scale(1.3);
+        }
+
+        /* Edit mode styles */
+        .edit-btn {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .edit-btn:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+
+        .editable-title, .editable-content {
+            border: 2px dashed transparent;
+            transition: all 0.3s ease;
+        }
+
+        .editing .editable-title, .editing .editable-content {
+            border-color: #667eea;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        [contenteditable="true"]:focus {
+            outline: none;
+            background: #f8f9ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="card">
+            <div id="page1" class="page active">
+                <button class="edit-btn" onclick="toggleEdit(1)">Edit</button>
+                <div class="page-number">Page 1 of 5</div>
+                <h2 class="page-title editable-title" contenteditable="false">Welcome to Your Story</h2>
+                <div class="page-content editable-content" contenteditable="false">
+                    This is your first page. Click the "Edit" button to customize this text with your own message. You can write anything you want here - a story, a letter, a poem, or any other content that matters to you.
+                    <br><br>
+                    Use the navigation buttons below to move between pages. Each page can contain as much text as you need, and you can edit any page independently.
+                </div>
+            </div>
+
+            <div id="page2" class="page">
+                <button class="edit-btn" onclick="toggleEdit(2)">Edit</button>
+                <div class="page-number">Page 2 of 5</div>
+                <h2 class="page-title editable-title" contenteditable="false">Second Chapter</h2>
+                <div class="page-content editable-content" contenteditable="false">
+                    Add your second page content here. This could be a continuation of your story, another section of your message, or something completely different.
+                    <br><br>
+                    The card automatically animates when you switch between pages, creating a smooth and engaging reading experience.
+                </div>
+            </div>
+
+            <div id="page3" class="page">
+                <button class="edit-btn" onclick="toggleEdit(3)">Edit</button>
+                <div class="page-number">Page 3 of 5</div>
+                <h2 class="page-title editable-title" contenteditable="false">Third Section</h2>
+                <div class="page-content editable-content" contenteditable="false">
+                    Your third page awaits your creativity. Edit this text to make it your own. Share thoughts, memories, wishes, or anything that you want to express.
+                    <br><br>
+                    Each page maintains its content as you navigate through the card.
+                </div>
+            </div>
+
+            <div id="page4" class="page">
+                <button class="edit-btn" onclick="toggleEdit(4)">Edit</button>
+                <div class="page-number">Page 4 of 5</div>
+                <h2 class="page-title editable-title" contenteditable="false">Almost There</h2>
+                <div class="page-content editable-content" contenteditable="false">
+                    The fourth page is here for more of your content. Keep your message flowing across multiple pages to create a comprehensive and beautiful presentation.
+                    <br><br>
+                    Don't forget - you can always come back and edit any page at any time.
+                </div>
+            </div>
+
+            <div id="page5" class="page">
+                <button class="edit-btn" onclick="toggleEdit(5)">Edit</button>
+                <div class="page-number">Page 5 of 5</div>
+                <h2 class="page-title editable-title" contenteditable="false">The Final Page</h2>
+                <div class="page-content editable-content" contenteditable="false">
+                    This is your final page. End your story, message, or presentation with something memorable. Make it count!
+                    <br><br>
+                    Thank you for using this multi-page card. Your content has been beautifully presented across five pages.
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">← Previous</button>
+                <div class="page-indicator">
+                    <div class="dot active"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentPage = 1;
+        const totalPages = 5;
+
+        function changePage(direction) {
+            const newPage = currentPage + direction;
+            
+            if (newPage < 1 || newPage > totalPages) return;
+            
+            document.getElementById(`page${currentPage}`).classList.remove('active');
+            currentPage = newPage;
+            document.getElementById(`page${currentPage}`).classList.add('active');
+            
+            updateNavigation();
+        }
+
+        function updateNavigation() {
+            document.getElementById('prevBtn').disabled = currentPage === 1;
+            document.getElementById('nextBtn').disabled = currentPage === totalPages;
+            
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentPage - 1);
+            });
+        }
+
+        function toggleEdit(pageNum) {
+            const page = document.getElementById(`page${pageNum}`);
+            const title = page.querySelector('.editable-title');
+            const content = page.querySelector('.editable-content');
+            const btn = page.querySelector('.edit-btn');
+            
+            const isEditing = title.contentEditable === 'true';
+            
+            if (isEditing) {
+                title.contentEditable = 'false';
+                content.contentEditable = 'false';
+                page.classList.remove('editing');
+                btn.textContent = 'Edit';
+                btn.style.background = '#667eea';
+            } else {
+                title.contentEditable = 'true';
+                content.contentEditable = 'true';
+                page.classList.add('editing');
+                btn.textContent = 'Done';
+                btn.style.background = '#28a745';
+                title.focus();
+            }
+        }
+
+        updateNavigation();
+    </script>
+</body>
+</html>
