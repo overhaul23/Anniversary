@@ -77,14 +77,6 @@
             }
         }
 
-        .page-number {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 14px;
-            color: #667eea;
-            font-weight: 600;
-        }
 
         .page-title {
             font-size: 28px;
@@ -161,100 +153,56 @@
             background: white;
             transform: scale(1.3);
         }
-
-        /* Edit mode styles */
-        .edit-btn {
-            position: absolute;
-            top: 20px;
-            left: 30px;
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 15px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-
-        .edit-btn:hover {
-            background: #764ba2;
-            transform: scale(1.05);
-        }
-
-        .editable-title, .editable-content {
-            border: 2px dashed transparent;
-            transition: all 0.3s ease;
-        }
-
-        .editing .editable-title, .editing .editable-content {
-            border-color: #667eea;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        [contenteditable="true"]:focus {
-            outline: none;
-            background: #f8f9ff;
-        }
     </style>
 </head>
 <body>
     <div class="card-container">
         <div class="card">
             <div id="page1" class="page active">
-                <button class="edit-btn" onclick="toggleEdit(1)">Edit</button>
-                <div class="page-number">Page 1 of 5</div>
-                <h2 class="page-title editable-title" contenteditable="false">Welcome to Your Story</h2>
-                <div class="page-content editable-content" contenteditable="false">
-                    This is your first page. Click the "Edit" button to customize this text with your own message. You can write anything you want here - a story, a letter, a poem, or any other content that matters to you.
+                <h2 class="page-title">HAPPY 2nd ANNIVERSARY MY LOVE❤❤</h2>
+                <div class="page-content">
+                     Heyyyyaaaa BHARGAVI ❤❤ <br><br> Finally!!!! Its been complete 2 years since we are together in an official relationship and I am really happy that we had the courage to come this far.
+
                     <br><br>
-                    Use the navigation buttons below to move between pages. Each page can contain as much text as you need, and you can edit any page independently.
+                    So let us now dive into a short story of ours and some of the special moments we have had together.
+
                 </div>
             </div>
 
             <div id="page2" class="page">
-                <button class="edit-btn" onclick="toggleEdit(2)">Edit</button>
-                <div class="page-number">Page 2 of 5</div>
-                <h2 class="page-title editable-title" contenteditable="false">Second Chapter</h2>
-                <div class="page-content editable-content" contenteditable="false">
-                    Add your second page content here. This could be a continuation of your story, another section of your message, or something completely different.
+                <h2 class="page-title">Welcome To Our Story</h2>
+                <div class="page-content">
+                    I am really sorriiiee that I won't be writing some much for you right now as there are many experiences that we can talk with each other and also it is your birthday month so I need to save some thoughts for that as well😝😝.
                     <br><br>
-                    The card automatically animates when you switch between pages, creating a smooth and engaging reading experience.
+                    Yeahh so do you remember the day of 12th November 2023.... We knew that we are going to start our new journey on that day so we were waiting for our proposals to finish so we can enjoy holding hands. After so much time we finally got a chance to be alone on that day and I finally proposed you by giving a little gift to you on your right cheek. I hope you still remember it 😜😜. And that is how our journey began.
                 </div>
             </div>
 
             <div id="page3" class="page">
-                <button class="edit-btn" onclick="toggleEdit(3)">Edit</button>
-                <div class="page-number">Page 3 of 5</div>
-                <h2 class="page-title editable-title" contenteditable="false">Third Section</h2>
-                <div class="page-content editable-content" contenteditable="false">
-                    Your third page awaits your creativity. Edit this text to make it your own. Share thoughts, memories, wishes, or anything that you want to express.
+                <h2 class="page-title">FEB 2024 and LDR</h2>
+                <div class="page-content">
+                    So now let's also remember February 2024 when for some reason our relationship was exposed in your house and your mother took actions for it as well😝😝.... It was a very memorable day as I actaully came to your house and we handle things before it becomes worse. But now that eveything is settled i am glad we were able to surpass this situation.
                     <br><br>
-                    Each page maintains its content as you navigate through the card.
+                    But as time passes new problems comes haunting to us.... Although we knew that we could end up in a LONG DISTANCE RELATIONSHIP but it was a very sad moment for both of us as we knew it is going to be very tough but we actually were happy as we are going to experience some things. And that's how our LDR began.
                 </div>
             </div>
 
             <div id="page4" class="page">
-                <button class="edit-btn" onclick="toggleEdit(4)">Edit</button>
-                <div class="page-number">Page 4 of 5</div>
-                <h2 class="page-title editable-title" contenteditable="false">Almost There</h2>
-                <div class="page-content editable-content" contenteditable="false">
-                    The fourth page is here for more of your content. Keep your message flowing across multiple pages to create a comprehensive and beautiful presentation.
+                <h2 class="page-title">SPECIAL DATES</h2>
+                <div class="page-content">
+                   I agree at the starting phase of our LDR we faced many fights but we were able to surpass them as soon as possible. But we also were able to go on some fun little dates together like MARINES. It was an unexpected date as you came here for holidays and we planned it in very less time. We really enjoyed our time at Marines and we also have great pictures of that day. And this won't be the end of it as time passes by we are going to have even more and more fun yayyiieee😁😁.
                     <br><br>
-                    Don't forget - you can always come back and edit any page at any time.
+                   Now let us memorize our double date with our friends. Yesss the day we went to Iskcon temple hehehehehe😁😁. I really had the best time with you at Iskcon temple as the GODS who resides there are our favourite and we really love them so much just like we love each other. It was also a very fun date and we even had some great pictures. 
                 </div>
             </div>
 
             <div id="page5" class="page">
-                <button class="edit-btn" onclick="toggleEdit(5)">Edit</button>
-                <div class="page-number">Page 5 of 5</div>
-                <h2 class="page-title editable-title" contenteditable="false">The Final Page</h2>
-                <div class="page-content editable-content" contenteditable="false">
-                    This is your final page. End your story, message, or presentation with something memorable. Make it count!
+                <h2 class="page-title">THE DESERT</h2>
+                <div class="page-content">
+                    Don't get confuse from the title as it reflects our current situation. Yeahh I know it is getting difficult to meet in recent days but i think we should not let ourselves down because of this dryness and should keep cheering each other with endless LOVE. 
                     <br><br>
-                    Thank you for using this multi-page card. Your content has been beautifully presented across five pages.
+                    Thank you so much for coming and also staying into my life as you make my life more bright.<br><br>
+                    I LOVE YOU SO MUCH BHARGAVI❤❤
                 </div>
             </div>
 
@@ -296,30 +244,6 @@
             dots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentPage - 1);
             });
-        }
-
-        function toggleEdit(pageNum) {
-            const page = document.getElementById(`page${pageNum}`);
-            const title = page.querySelector('.editable-title');
-            const content = page.querySelector('.editable-content');
-            const btn = page.querySelector('.edit-btn');
-            
-            const isEditing = title.contentEditable === 'true';
-            
-            if (isEditing) {
-                title.contentEditable = 'false';
-                content.contentEditable = 'false';
-                page.classList.remove('editing');
-                btn.textContent = 'Edit';
-                btn.style.background = '#667eea';
-            } else {
-                title.contentEditable = 'true';
-                content.contentEditable = 'true';
-                page.classList.add('editing');
-                btn.textContent = 'Done';
-                btn.style.background = '#28a745';
-                title.focus();
-            }
         }
 
         updateNavigation();
